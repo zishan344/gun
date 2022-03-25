@@ -1,0 +1,15 @@
+.modal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  background-color: rgba(26, 22, 22, 0.431);
+  border-radius: 5px;
+}
+.modal-img img {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+}
+.modal-info {
+}

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { CgCloseR } from "react-icons/cg";
+import Modal from "react-modal";
 import "./App.css";
 import Card from "./Card/Card";
+import MrModal from "./component/MrModal/MrModal";
 import Navbar from "./Navbar/Navbar";
-import Modal from "react-modal";
-import { CgCloseR } from "react-icons/cg";
 
 Modal.setAppElement("#root");
 
@@ -11,7 +12,6 @@ function App() {
   const [guns, setGuns] = useState([]);
   const [cart, setCart] = useState([]);
   const [modal, setModal] = useState(false);
-  console.log(guns);
 
   const customStyles = {
     content: {
@@ -49,22 +49,22 @@ function App() {
   return (
     <div>
       <Navbar cart={cart} toggleModal={toggleModal} />
-      <div className='card-container'>
+      <div className="card-container">
         {guns.map((gun) => (
           <Card gun={gun} key={gun.id} handleAddToCart={handleAddToCart} />
         ))}
       </div>
       <Modal isOpen={modal} onRequestClose={closeModal} style={customStyles}>
-        <button className='modal-close-button' onClick={closeModal}>
+        <button className="modal-close-button" onClick={closeModal}>
           <CgCloseR size={25} />
         </button>
         {cart.length === 0 && (
-          <div className='cart-warning'>
+          <div className="cart-warning">
             <p> Cart is empty </p>
           </div>
         )}
         {cart.map((item) => (
-          <h1>Name: {item.name}</h1>
+          <MrModal cart={item} key={item.id}></MrModal>
         ))}
       </Modal>
     </div>
